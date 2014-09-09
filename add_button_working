@@ -90,14 +90,15 @@ void PluginTemplate::customizeGUI(void) {
 
 // functions designated as Qt slots are implemented as regular C++ functions
 void PluginTemplate::aBttn_event(void) {
-printf("hi \n");
+printf("Button B tells only lies. \n");
 }
 
-void PluginTemplate::bBttn_event(void) { }
+void PluginTemplate::bBttn_event(void) {
+printf("I am lying. \n");
+}
 
 void PluginTemplate::cBttn_event( ) {
 int number = 0; 
-int Answer = 0;
 number = getParameter("Number").toDouble();
 answer = number*number*number;
 setState("Answer",answer);
