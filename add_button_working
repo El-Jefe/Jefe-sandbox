@@ -22,7 +22,7 @@ static DefaultGUIModel::variable_t vars[] = {
 
 static size_t num_vars = sizeof(vars) / sizeof(DefaultGUIModel::variable_t);
 
-PluginTemplate::PluginTemplate(void) : DefaultGUIModel("PluginTemplate with Custom GUI", ::vars, ::num_vars) {
+PluginTemplate::PluginTemplate(void) : DefaultGUIModel("El Jefe El Besto", ::vars, ::num_vars) {
 	setWhatsThis("<p><b>PluginTemplate:</b><br>QWhatsThis description.</p>");
 	DefaultGUIModel::createGUI(vars, num_vars); // this is required to create the GUI
 	customizeGUI();
@@ -33,10 +33,6 @@ PluginTemplate::PluginTemplate(void) : DefaultGUIModel("PluginTemplate with Cust
 PluginTemplate::~PluginTemplate(void) { }
 
 void PluginTemplate::execute(void) {
-	int Answer = 0;
-	setParameter("Number", Number);
-	Number = getParameter("Number").toDouble();
-	Answer = Number*Number*Number;
 	return;
 }
 
@@ -73,9 +69,9 @@ void PluginTemplate::customizeGUI(void) {
 	
 	QGroupBox *button_group = new QGroupBox;
 	
-	QPushButton *abutton = new QPushButton("Button A");
-	QPushButton *bbutton = new QPushButton("Button B");
-	QPushButton *cbutton = new QPushButton("Omni Button");
+	QPushButton *abutton = new QPushButton("Button 1");
+	QPushButton *bbutton = new QPushButton("Button A");
+	QPushButton *cbutton = new QPushButton("Cubes");
 	QHBoxLayout *button_layout = new QHBoxLayout;
 	button_group->setLayout(button_layout);
 	button_layout->addWidget(abutton);
@@ -90,7 +86,7 @@ void PluginTemplate::customizeGUI(void) {
 
 // functions designated as Qt slots are implemented as regular C++ functions
 void PluginTemplate::aBttn_event(void) {
-printf("Button B tells only lies. \n");
+printf("The other button tells only lies. \n");
 }
 
 void PluginTemplate::bBttn_event(void) {
