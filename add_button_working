@@ -33,6 +33,7 @@ PluginTemplate::PluginTemplate(void) : DefaultGUIModel("El Jefe El Besto", ::var
 PluginTemplate::~PluginTemplate(void) { }
 
 void PluginTemplate::execute(void) {
+	int number = 0; 
 	return;
 }
 
@@ -47,6 +48,8 @@ void PluginTemplate::update(DefaultGUIModel::update_flags_t flag) {
 		case MODIFY:
 			some_parameter = getParameter("GUI label").toDouble();
 			Number = getParameter("Number").toDouble();
+			answer = Number*10;
+			setState("Answer",answer);
 			break;
 
 		case UNPAUSE:
