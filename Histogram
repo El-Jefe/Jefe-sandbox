@@ -38,25 +38,26 @@ PluginTemplate::~PluginTemplate(void) { }
 void PluginTemplate::execute(void) {
 	bin_size = getParameter("Bin Size").toDouble();
 	int array [bin_size] = {};
-	int number = 0
-	int window = 1
-	int spk = 0
+	int number = 0;
+	int window = 1;
+	int spk = 0;
 	myfile.open("TestSpike@FPdata-1min.wav");
-	while number<=bin_size
-		if number<bin_size
-			if myfile(window) > threshold //Place holder while I figure out how to determine when spikes happen
-				spk += 1
-				array[number] = spk
-				number += 1
+	while number<=bin_size;
+		if number<bin_size;
+			if myfile(window) > threshold; //Place holder while I figure out how to determine when spikes happen
+				spk += 1;
+				array[number] = spk;
+				number += 1;
 			else
-				number = number
+				number = number;
 		else
-			if myfile(window) > threshold
-				spk += 1
-				array[number] = spk
-				number += 1		
+			if myfile(window) > threshold;
+				spk += 1;
+				array[number] = spk;
+				number += 1;
+				window += 1;		
 	return;
-	number = 0
+	number = 0;
 }
 
 void PluginTemplate::update(DefaultGUIModel::update_flags_t flag) {
