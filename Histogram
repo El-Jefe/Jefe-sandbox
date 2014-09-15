@@ -17,6 +17,8 @@ static DefaultGUIModel::variable_t vars[] = {
 		| DefaultGUIModel::DOUBLE, },
 	{ "Bin Size", "Bin", DefaultGUIModel::PARAMETER
 		| DefaultGUIModel::DOUBLE, },
+	{ "Threshold", "Threshold", DefaultGUIModel::Parameter
+		| DefaultGUIModel::Double, },
 	{ "Fire Rate", "Rate", DefaultGUIModel:: STATE, },
 	{ "A State", "Tooltip description", DefaultGUIModel::STATE, }, 
 };
@@ -35,8 +37,19 @@ PluginTemplate::~PluginTemplate(void) { }
 
 void PluginTemplate::execute(void) {
 	bin_size = getParameter("Bin Size").toDouble();
-	int array [bin_size]
-	myfile.open("TestSpike@FPdata-1min.wav")
+	int array [bin_size] = {};
+	int number = 0
+	myfile.open("TestSpike@FPdata-1min.wav");
+	while number<=bin_size
+		if number<bin_size
+			if && myfile(number) > 1 //Place holder while I figure out how to determine when spikes happen
+				array[number] = number
+				number += 1
+			else
+				number = number
+		
+		
+			
 	return;
 }
 
