@@ -35,7 +35,8 @@ PluginTemplate::~PluginTemplate(void) { }
 
 void PluginTemplate::execute(void) {
 	bin_size = getParameter("Bin Size").toDouble();
-	int array = 
+	int array [bin_size]
+	myfile.open("TestSpike@FPdata-1min.wav")
 	return;
 }
 
