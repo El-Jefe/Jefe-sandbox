@@ -45,6 +45,7 @@ void PluginTemplate::execute(void) {
 	while number<=bin_size; //This section is not intended to be syntaxed correctly at this point but serves to illustrate the thought process
 		if number<bin_size;
 			if myfile(window) > threshold; //Place holder while I figure out how to determine when spikes happen
+//Yogi, I am reading up on what exactly the computer "sees" in a .wav file, because this will help me determine how to classify the number of spikes that cross the user-inputted threshold. This is the main thing holding me back at this point.
 				spk += 1;
 				array[number] = spk/bin;
 				number += 1;
