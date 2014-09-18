@@ -42,20 +42,22 @@ void PluginTemplate::execute(void) {
 	int window = 1;
 	int spk = 0;
 	myfile.open("TestSpike@FPdata-1min.wav");
-	while number<=bin_size;
+	while number<=bin_size; //This section is not intended to be syntaxed correctly at this point but serves to illustrate the thought process
 		if number<bin_size;
 			if myfile(window) > threshold; //Place holder while I figure out how to determine when spikes happen
 				spk += 1;
-				array[number] = spk;
+				array[number] = spk/bin;
 				number += 1;
 			else
 				number = number;
 		else
 			if myfile(window) > threshold;
-				spk += 1;
-				array[number] = spk;
-				number += 1;
-				window += 1;		
+			spk += 1;
+			array[number] = spk/bin;
+			number += 1;
+			window += 1;
+			//The intention is to have a sliding window that calculates first the number of spikes in "bin" seconds, then the firing rate for that particular bin of time, which is then stored in "array." I am aware that this is far from the correct syntax, I am just trying to think the problem through before I worry about coding it correctly
+					
 	return;
 	number = 0;
 }
