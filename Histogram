@@ -68,9 +68,9 @@ if(!strcmp(id,"WAVE"))
 	fread(&data_size,sizeof(F),1,fp);//number of bytes of data
 	}
 else
-printf("Not a valid file type /n")
+printf("Not a valid file /n")
 else
-printf("Not a valid file type /n")
+printf("Not a valid file /n")
 }
 }
 
