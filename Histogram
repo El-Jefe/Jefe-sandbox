@@ -41,7 +41,42 @@ void PluginTemplate::execute(void) {
 	int number = 0;//Starting point of the scan through the .wav file (entire file is diveded into chunks of length "bin size") and each is analyzed one by one
 	int window = 1;//used to scan through each chunk of size "bin size"
 	int spk = 0;//spike counter
-	myfile.open("TestSpike@FPdata-1min.wav");
+
+
+//Sequence to open .wav file
+FILE *fp;
+fp = fopen("TestSpike@FPdata-1min.wav","rb);
+if(fp)
+{
+B id[4];//four bytes hold 'RIFF'
+F size; // file size
+
+freat(id,sizeof(B),4,fp)//read first 4 bytes
+if(!strcmp(id,"RIFF"))//make sure first 4 bytes are 'RIFF'
+{
+fread(size,sizeof(F),1,fp);
+fread(id,sizeof(B),4,fp);
+if(!strcmp(id,"WAVE"))
+	{
+	fread(id,sizeof(B),4,fp);
+	fread(format_length, sizeof(F),1,fp);
+	fread(format_tag,sizeof(short),1,fp);
+	fread(channels,sizeof(short),1,fp);
+	fread(sample_rate,sizeof(F),1,fp);
+	fread(bits_per_sample,sizeof(short),1,fp);
+	fread(id, sizeof(B),4,fp);
+	fread(&data_size,sizeof(F),1,fp);//number of bytes of data
+	}
+else
+printf("Not a valid file type /n")
+else
+printf("Not a valid file type /n")
+}
+}
+
+//once the data file has been opened, it can be processed
+
+
 	while number<=bin_size; //This section is not intended to be syntaxed correctly at this point but serves to illustrate the thought process
 		if number<bin_size;
 			if myfile(window) > threshold; //Place holder while I figure out how to determine when spikes happen
