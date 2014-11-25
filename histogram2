@@ -22,34 +22,35 @@ refresh();
 void histogram2 ::execute(void) {
 systime = RT::OS::getTime();
 switch (state) {
-case 0:
-if (input(0) > thresh) state = 1;// A spike has occured, count that shit
-break;
-case 1:
-state = 2;
-break;
-case 2:
-if (input(0) > thresh && (systime - spktime) > 100) state = 4;
-else if (input(0) < thresh) state = 3;
-break;
-case 3:
-state = -1;
-break;
-case 4:
+	case 0:
+	if (input(0) > thresh) state = 1;// A spike has occured, count that shit
+		printf("%d",systime)
+	break;
+	case 1:
+	state = 2;
+	break;
+	case 2:
+	if (input(0) > thresh && (systime - spktime) > 100) state = 4;
+	else if (input(0) < thresh) state = 3;
+	break;
+	case 3:
+	state = -1;
+	break;
+	case 4:
 if (input(0) < thresh) state = -1;
-break;
-case -1:
+	break;
+	case -1:
 if (systime - spktime > min_int) state = 0;
-break;
-default:
-break;
+	break;
+	default:
+	break;
 }
 if (state == 1) countspikes();
 switch (flag) {
-case INIT:
-setParameter("Threshold (mV)", QString::number(thresh * 1000.0)); // in V, display in mV
-setState("# Spikes", spikecount);
-break;
+	case INIT:
+	setParameter("Threshold (mV)", QString::number(thresh * 1000.0)); // in V, display in mV
+	setState("# Spikes", spikecount);
+	break;
 }
 void SpikeStats::reset() {
 runningPeriod.clear();
@@ -58,22 +59,5 @@ state = 0;
 spikecount = 0;
 spktime = 0;
 }
-//void histogram2::initParameters() {
-//dt = RT::System::getInstance()->getPeriod() * 1e-9; // s
-//reset();
-//}
-//void histogram2::customizeGUI(void) {
-//QGridLayout *customlayout = DefaultGUIModel::getLayout();
-//QGroupBox *bttnGroup = new QGroupBox;
-//QHBoxLayout *bttnGroupLayout = new QHBoxLayout;
-//bttnGroup->setLayout(bttnGroupLayout);
-//QPushButton *resetButton = new QPushButton("Reset Statistics");
-//bttnGroupLayout->addWidget(resetButton);
-//QObject::connect(resetButton, SIGNAL(clicked()), this, SLOT(reset()));
-//customlayout->addWidget(bttnGroup, 0, 0);
-//setLayout(customlayout);
-//}
-//void STA::clearData() {
-//eventcount = 0;
-//for (int i = 0; i < n; i++) {
-//signalin.push_back(0);
+
+
